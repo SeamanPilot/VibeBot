@@ -1,0 +1,232 @@
+symbols:
+  - root: ES
+    description: E-mini S&P 500
+    asset_class: equity_index
+    tick_size: 0.25
+    tick_value: 12.5
+    multiplier: 50
+    currency: USD
+    default_commission_per_contract: 1.5
+    default_slippage_ticks: 1.0
+    session_windows:
+      - name: cme_globex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: us_cash_open
+        start: "09:30"
+        end: "16:00"
+        tz: America/New_York
+    restricted_windows:
+      - name: settle_window
+        start: "16:55"
+        end: "17:05"
+        tz: America/New_York
+    mappings:
+      tradingview: CME_MINI:ES1!
+      broker: ES
+      data_vendor: ES
+
+  - root: NQ
+    description: E-mini Nasdaq-100
+    asset_class: equity_index
+    tick_size: 0.25
+    tick_value: 5
+    multiplier: 20
+    currency: USD
+    default_commission_per_contract: 1.5
+    default_slippage_ticks: 1.0
+    session_windows:
+      - name: cme_globex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: us_cash_open
+        start: "09:30"
+        end: "16:00"
+        tz: America/New_York
+    restricted_windows:
+      - name: settle_window
+        start: "16:55"
+        end: "17:05"
+        tz: America/New_York
+    mappings:
+      tradingview: CME_MINI:NQ1!
+      broker: NQ
+      data_vendor: NQ
+
+  - root: CL
+    description: Crude Oil Futures
+    asset_class: energy
+    tick_size: 0.01
+    tick_value: 10
+    multiplier: 1000
+    currency: USD
+    default_commission_per_contract: 1.8
+    default_slippage_ticks: 1.5
+    session_windows:
+      - name: nymex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: liquid_hours
+        start: "09:00"
+        end: "14:30"
+        tz: America/New_York
+    restricted_windows:
+      - name: inventory_news_buffer
+        start: "10:20"
+        end: "10:40"
+        tz: America/New_York
+    mappings:
+      tradingview: NYMEX:CL1!
+      broker: CL
+      data_vendor: CL
+
+  - root: GC
+    description: Gold Futures
+    asset_class: metals
+    tick_size: 0.1
+    tick_value: 10
+    multiplier: 100
+    currency: USD
+    default_commission_per_contract: 1.8
+    default_slippage_ticks: 1.5
+    session_windows:
+      - name: comex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: liquid_hours
+        start: "08:20"
+        end: "13:30"
+        tz: America/New_York
+    restricted_windows:
+      - name: settlement_buffer
+        start: "12:25"
+        end: "12:35"
+        tz: America/New_York
+    mappings:
+      tradingview: COMEX:GC1!
+      broker: GC
+      data_vendor: GC
+
+  - root: MES
+    description: Micro E-mini S&P 500
+    asset_class: equity_index
+    tick_size: 0.25
+    tick_value: 1.25
+    multiplier: 5
+    currency: USD
+    default_commission_per_contract: 0.75
+    default_slippage_ticks: 1.0
+    session_windows:
+      - name: cme_globex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: us_cash_open
+        start: "09:30"
+        end: "16:00"
+        tz: America/New_York
+    restricted_windows:
+      - name: settle_window
+        start: "16:55"
+        end: "17:05"
+        tz: America/New_York
+    mappings:
+      tradingview: CME_MINI:MES1!
+      broker: MES
+      data_vendor: MES
+
+  - root: MNQ
+    description: Micro E-mini Nasdaq-100
+    asset_class: equity_index
+    tick_size: 0.25
+    tick_value: 0.5
+    multiplier: 2
+    currency: USD
+    default_commission_per_contract: 0.75
+    default_slippage_ticks: 1.0
+    session_windows:
+      - name: cme_globex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: us_cash_open
+        start: "09:30"
+        end: "16:00"
+        tz: America/New_York
+    restricted_windows:
+      - name: settle_window
+        start: "16:55"
+        end: "17:05"
+        tz: America/New_York
+    mappings:
+      tradingview: CME_MINI:MNQ1!
+      broker: MNQ
+      data_vendor: MNQ
+
+  - root: MCL
+    description: Micro WTI Crude Oil
+    asset_class: energy
+    tick_size: 0.01
+    tick_value: 1
+    multiplier: 100
+    currency: USD
+    default_commission_per_contract: 0.95
+    default_slippage_ticks: 1.5
+    session_windows:
+      - name: nymex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: liquid_hours
+        start: "09:00"
+        end: "14:30"
+        tz: America/New_York
+    restricted_windows:
+      - name: inventory_news_buffer
+        start: "10:20"
+        end: "10:40"
+        tz: America/New_York
+    mappings:
+      tradingview: NYMEX:MCL1!
+      broker: MCL
+      data_vendor: MCL
+
+  - root: MGC
+    description: Micro Gold Futures
+    asset_class: metals
+    tick_size: 0.1
+    tick_value: 1
+    multiplier: 10
+    currency: USD
+    default_commission_per_contract: 0.95
+    default_slippage_ticks: 1.5
+    session_windows:
+      - name: comex
+        start: "18:00"
+        end: "17:00"
+        tz: America/New_York
+    allowed_trade_windows:
+      - name: liquid_hours
+        start: "08:20"
+        end: "13:30"
+        tz: America/New_York
+    restricted_windows:
+      - name: settlement_buffer
+        start: "12:25"
+        end: "12:35"
+        tz: America/New_York
+    mappings:
+      tradingview: COMEX:MGC1!
+      broker: MGC
+      data_vendor: MGC

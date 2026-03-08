@@ -1,0 +1,103 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "futures-ai-bot"
+version = "0.1.0"
+description = "Research and paper-trading platform for short-horizon futures strategies."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "VibeBot Team" }
+]
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "streamlit>=1.41.0",
+  "pydantic>=2.10.0",
+  "pydantic-settings>=2.6.0",
+  "pandas>=2.2.0",
+  "numpy>=2.2.0",
+  "scikit-learn>=1.6.0",
+  "pyyaml>=6.0.2",
+  "pyarrow>=18.0.0",
+  "jinja2>=3.1.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-cov>=6.0.0",
+  "mypy>=1.13.0",
+  "ruff>=0.8.0",
+  "black>=24.10.0",
+  "pre-commit>=4.0.0",
+  "types-PyYAML>=6.0.12.20240917"
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = [
+  "apps/api/src",
+  "services/executor/src",
+  "services/strategy/src",
+  "services/backtest/src",
+  "services/training/src",
+  "libs/common/src"
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["models/registry", "reports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "S", "BLE", "PIE", "RUF"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [
+  "apps/api/src",
+  "services/executor/src",
+  "services/strategy/src",
+  "services/backtest/src",
+  "services/training/src",
+  "libs/common/src"
+]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.12"
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+ignore_missing_imports = true
+mypy_path = [
+  "apps/api/src",
+  "services/executor/src",
+  "services/strategy/src",
+  "services/backtest/src",
+  "services/training/src",
+  "libs/common/src"
+]
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["streamlit.*", "pandas", "pandas.*", "sklearn", "sklearn.*", "pyarrow", "pyarrow.*"]
+ignore_missing_imports = true

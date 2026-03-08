@@ -1,0 +1,81 @@
+Metadata-Version: 2.4
+Name: futures-ai-bot
+Version: 0.1.0
+Summary: Research and paper-trading platform for short-horizon futures strategies.
+Author: VibeBot Team
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.32.0
+Requires-Dist: streamlit>=1.41.0
+Requires-Dist: pydantic>=2.10.0
+Requires-Dist: pydantic-settings>=2.6.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: numpy>=2.2.0
+Requires-Dist: scikit-learn>=1.6.0
+Requires-Dist: pyyaml>=6.0.2
+Requires-Dist: pyarrow>=18.0.0
+Requires-Dist: jinja2>=3.1.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Requires-Dist: pytest-cov>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.13.0; extra == "dev"
+Requires-Dist: ruff>=0.8.0; extra == "dev"
+Requires-Dist: black>=24.10.0; extra == "dev"
+Requires-Dist: pre-commit>=4.0.0; extra == "dev"
+Requires-Dist: types-PyYAML>=6.0.12.20240917; extra == "dev"
+
+# Futures AI Bot
+
+Production-style Python 3.12 monorepo for futures research and paper trading focused on short-horizon scalp workflows.
+
+## Safety Defaults
+- Paper trading enabled by default.
+- Live broker integration disabled by default.
+- No martingale/grid/revenge/averaging-down logic.
+- No auto-promotion of models to production.
+- No profit guarantees.
+
+## Repo Layout
+- `apps/api`: FastAPI service (`/health`, TradingView webhook, admin views)
+- `apps/dashboard`: Streamlit operations dashboard
+- `services/executor`: Paper broker + risk engine
+- `services/strategy`: Feature engineering + signal engine
+- `services/backtest`: Event-driven backtesting + reports
+- `services/training`: Ingestion, labels, dataset, training, registry, drift checks
+- `libs/common`: Shared settings, models, metadata, logging, data utils
+
+## Quickstart
+```bash
+python -m pip install -U pip
+python -m pip install -e .[dev]
+copy .env.example .env
+python -m training.synthetic_data
+python -m training.train train
+python -m backtest.run
+python -m uvicorn api.main:app --host 0.0.0.0 --port 8000
+streamlit run apps/dashboard/app.py
+```
+
+## Developer Commands
+```bash
+make lint
+make typecheck
+make test
+make demo
+```
+
+## Model Registry Commands
+```bash
+python -m training.train list
+python -m training.train promote --model-id <id> --version <version>
+python -m training.train rollback --model-id <id> --version <version>
+```
+
+## TradingView Assets
+- `tradingview/indicator_alerts.pine`
+- `tradingview/strategy_alerts.pine`
+- `tradingview/payload_templates.json`
+
+## Disclaimer
+This repository is for research and paper simulation only by default. Real trading carries significant risk.

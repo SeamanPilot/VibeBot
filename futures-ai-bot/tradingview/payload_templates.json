@@ -1,0 +1,50 @@
+{
+  "signal_only": {
+    "secret": "${TRADINGVIEW_SHARED_SECRET}",
+    "event_type": "signal_only",
+    "symbol": "ES",
+    "timeframe": "1m",
+    "action": "NO_TRADE",
+    "timestamp": "2026-01-01T14:30:00Z",
+    "price": 5100.25,
+    "confidence": 0.5,
+    "metadata": {
+      "note": "indicator heartbeat"
+    }
+  },
+  "entry": {
+    "secret": "${TRADINGVIEW_SHARED_SECRET}",
+    "event_type": "entry",
+    "symbol": "MES",
+    "timeframe": "1m",
+    "action": "LONG_ENTRY",
+    "timestamp": "2026-01-01T14:31:00Z",
+    "price": 5100.5,
+    "confidence": 0.67,
+    "metadata": {
+      "strategy_id": "tv_ema_v1"
+    }
+  },
+  "exit": {
+    "secret": "${TRADINGVIEW_SHARED_SECRET}",
+    "event_type": "exit",
+    "symbol": "MES",
+    "timeframe": "1m",
+    "action": "EXIT_LONG",
+    "timestamp": "2026-01-01T14:35:00Z",
+    "price": 5102.0,
+    "confidence": 0.59,
+    "metadata": {
+      "reason": "crossunder"
+    }
+  },
+  "heartbeat": {
+    "secret": "${TRADINGVIEW_SHARED_SECRET}",
+    "event_type": "heartbeat",
+    "symbol": "ES",
+    "timeframe": "1m",
+    "action": "HOLD",
+    "timestamp": "2026-01-01T14:30:30Z",
+    "confidence": 0.5
+  }
+}

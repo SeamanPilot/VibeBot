@@ -1,0 +1,29 @@
+//@version=6
+strategy("Futures AI Bridge Strategy", overlay=true, initial_capital=100000, default_qty_type=strategy.fixed, default_qty_value=1)
+
+shared_secret = input.string("change-me", "Shared Secret")
+symbol_root = input.string("ES", "Symbol Root")
+timeframe_label = input.string("1m", "Timeframe")
+fast_len = input.int(9, "Fast EMA")
+slow_len = input.int(21, "Slow EMA")
+
+fast = ta.ema(close, fast_len)
+slow = ta.ema(close, slow_len)
+long_signal = ta.crossover(fast, slow)
+short_signal = ta.crossunder(fast, slow)
+
+entry_long_msg = '{"secret":"' + shared_secret + '","event_type":"entry","symbol":"' + symbol_root + '","timeframe":"' + timeframe_label + '","action":"LONG_ENTRY","timestamp":"{{timenow}}","price":{{close}},"confidence":0.65}'
+entry_short_msg = '{"secret":"' + shared_secret + '","event_type":"entry","symbol":"' + symbol_root + '","timeframe":"' + timeframe_label + '","action":"SHORT_ENTRY","timestamp":"{{timenow}}","price":{{close}},"confidence":0.65}'
+exit_long_msg = '{"secret":"' + shared_secret + '","event_type":"exit","symbol":"' + symbol_root + '","timeframe":"' + timeframe_label + '","action":"EXIT_LONG","timestamp":"{{timenow}}","price":{{close}},"confidence":0.55}'
+exit_short_msg = '{"secret":"' + shared_secret + '","event_type":"exit","symbol":"' + symbol_root + '","timeframe":"' + timeframe_label + '","action":"EXIT_SHORT","timestamp":"{{timenow}}","price":{{close}},"confidence":0.55}'
+
+if long_signal
+    strategy.close("S", alert_message=exit_short_msg)
+    strategy.entry("L", strategy.long, alert_message=entry_long_msg)
+
+if short_signal
+    strategy.close("L", alert_message=exit_long_msg)
+    strategy.entry("S", strategy.short, alert_message=entry_short_msg)
+
+plot(fast, color=color.new(color.green, 0))
+plot(slow, color=color.new(color.red, 0))
