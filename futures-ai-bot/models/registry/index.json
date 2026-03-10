@@ -1,6 +1,51 @@
 {
   "records": [
     {
+      "model_id": "mdl_4c9fbd63",
+      "version": "20260308210650",
+      "trained_at": "2026-03-08T21:06:50.801937+00:00",
+      "training_window": "2025-01-02 00:00:00+00:00 to 2025-01-03 00:54:00+00:00",
+      "featureset_version": "v1",
+      "metrics": {
+        "accuracy": 0.5366666666666666,
+        "brier": 0.24843801290321021,
+        "roc_auc": 0.5002635740643121
+      },
+      "status": "shadow",
+      "artifact_path": "models\\registry\\mdl_4c9fbd63\\20260308210650\\model.pkl",
+      "regime_artifact_path": "models\\registry\\mdl_4c9fbd63\\20260308210650\\regime_model.pkl",
+      "feature_columns": [
+        "ret_1",
+        "log_ret_1",
+        "rolling_vol",
+        "atr",
+        "dist_from_vwap",
+        "candle_body_ratio",
+        "close_location",
+        "breakout_pressure",
+        "breakdown_pressure",
+        "compression_expansion",
+        "mean_reversion_z",
+        "trend_slope_proxy",
+        "trend_strength",
+        "minute_of_day",
+        "day_of_week",
+        "range_pct",
+        "volume_z",
+        "rel_es_vs_nq",
+        "rel_cl_vs_gc",
+        "spread_ret_es_nq",
+        "spread_ret_cl_gc"
+      ],
+      "regime_feature_columns": [
+        "rolling_vol",
+        "atr",
+        "compression_expansion",
+        "range_pct",
+        "volume_z"
+      ]
+    },
+    {
       "model_id": "mdl_c2052246",
       "version": "20260308210536",
       "trained_at": "2026-03-08T21:05:36.877684+00:00",
@@ -91,9 +136,9 @@
       ]
     },
     {
-      "model_id": "mdl_4c9fbd63",
-      "version": "20260308210650",
-      "trained_at": "2026-03-08T21:06:50.801937+00:00",
+      "model_id": "mdl_1bf82a19",
+      "version": "20260308223323",
+      "trained_at": "2026-03-08T22:33:23.580752+00:00",
       "training_window": "2025-01-02 00:00:00+00:00 to 2025-01-03 00:54:00+00:00",
       "featureset_version": "v1",
       "metrics": {
@@ -102,8 +147,8 @@
         "roc_auc": 0.5002635740643121
       },
       "status": "shadow",
-      "artifact_path": "models\\registry\\mdl_4c9fbd63\\20260308210650\\model.pkl",
-      "regime_artifact_path": "models\\registry\\mdl_4c9fbd63\\20260308210650\\regime_model.pkl",
+      "artifact_path": "models\\registry\\mdl_1bf82a19\\20260308223323\\model.pkl",
+      "regime_artifact_path": "models\\registry\\mdl_1bf82a19\\20260308223323\\regime_model.pkl",
       "feature_columns": [
         "ret_1",
         "log_ret_1",
